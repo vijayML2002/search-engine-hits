@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body style="margin: 10px;">
+
+    <div class="well">CD Project : Search engine demo</div>
+
+    {% if keyword %}
+
+    <div class="well">Search Keyword : {{keyword}}</div>
+
+    {% else %}  
+    
+    <div class="well">Search Keyword : None</div>
+
+    {% endif %}
+
+    <form method="post">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Enter keywords" name="search_key">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="submit" style="outline: none;">Search</button>
+        </span>
+      </div>
+    </form>
+
+    {% if length %}
+
+    {% for i in range(length) %}
+
+    <br>
+
+    <p class="font-weight-bold" style="margin: 5px; font-size: 20px;"><a href="/page/{{file[i]}}">{{title[i]}}</a></p>
+    <span class="badge badge-warning" style="background-color: rgb(4, 95, 131); color: rgb(255, 255, 255);
+            border-radius: 3px;">cosine : {{cosine[i]}}</span>
+    <p class="font-weight-bold" style="margin: 5px;">{{text[i]}}</p>
+      
+    {% endfor %}
+
+    <br>
+
+    {% else %}
+
+    <p class="font-weight-bold" style="margin: 5px;">No search result</p>
+
+    <br>
+
+    {% endif %}
+
+  </body>
+</html>
